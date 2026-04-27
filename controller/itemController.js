@@ -51,51 +51,51 @@ exports.updatingFoods = (req, res) => {
   if (!food) return res.status(404).send("Item not found");
 
   const { name, quantity, price } = req.body;
-  if (name!==undefined) {
+  if (name !== undefined) {
     food.name = name;
   }
 
-  if (quantity!==undefined) {
+  if (quantity !== undefined) {
     food.quantity = quantity;
   }
 
-  if (price!==undefined) {
+  if (price !== undefined) {
     food.price = price;
   }
   res.json(food);
 };
 
 // using patch patch working food items
-exports.updatepartial=(req,res)=>{
-const { id } = req.params;
- const food = foods.find((f) => f.id === parseInt(id));
- if (!food) return res.status(404).send("Item not found");
+exports.updatepartial = (req, res) => {
+  const { id } = req.params;
+  const food = foods.find((f) => f.id === parseInt(id));
+  if (!food) return res.status(404).send("Item not found");
 
   const { name, quantity, price } = req.body;
-   if (name !== undefined) {
-        food.name = name
-    }
-    if (quantity !== undefined) {
-        food.quantity = quantity
-    }
-    if (price !== undefined) {
-        food.price = price
-    }
+  if (name !== undefined) {
+    food.name = name;
+  }
+  if (quantity !== undefined) {
+    food.quantity = quantity;
+  }
+  if (price !== undefined) {
+    food.price = price;
+  }
 
-    res.json(food)
-}
+  res.json(food);
+};
 
 // Deleting food items
 exports.deleteFood = (req, res) => {
   const id = parseInt(req.params.id);
 
   // 1. find index
-  const index = foods.findIndex(f => f.id === id);
+  const index = foods.findIndex((f) => f.id === id);
 
   // 2. check not found
   if (index === -1) {
     return res.status(404).json({
-      message: "Item not found"
+      message: "Item not found",
     });
   }
 
@@ -105,7 +105,6 @@ exports.deleteFood = (req, res) => {
   // 4. send response
   res.json({
     message: "Item deleted successfully",
-    data: deletedItem[0]
+    data: deletedItem[0],
   });
 };
-
