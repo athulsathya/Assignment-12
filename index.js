@@ -5,7 +5,7 @@ const foodRoute=require('./routes/itemroute')
 app.use(express.json())
 
 
-// Middleware used for Log Request method and URL
+// Middleware used for Log Request method and URL (application level middleware)
 app.use((req,res,next)=>{
  console.log(`${req.method} ${req.url}`)
  next()
